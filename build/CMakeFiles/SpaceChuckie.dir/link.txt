@@ -1,0 +1,2 @@
+/usr/bin/ar qc libSpaceChuckie.a  CMakeFiles/SpaceChuckie.dir/SpaceChuckie.cpp.o
+/usr/bin/ranlib libSpaceChuckie.a

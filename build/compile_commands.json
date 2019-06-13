@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/home/ozen/SpaceChuckie/build",
+  "command": "/usr/bin/x86_64-linux-gnu-g++-7    -g   -o CMakeFiles/SpaceChuckie.dir/SpaceChuckie.cpp.o -c /home/ozen/SpaceChuckie/SpaceChuckie.cpp",
+  "file": "/home/ozen/SpaceChuckie/SpaceChuckie.cpp"
+}
+]
