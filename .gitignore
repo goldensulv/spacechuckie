@@ -1,1 +1,4 @@
 *.ipch
+*.bin
+*.o
+01_hello_SDL
