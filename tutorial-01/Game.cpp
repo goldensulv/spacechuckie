@@ -21,10 +21,22 @@ Game::~Game()
 
 void Game::init(int _x, int _y)
 {
-    m_window = SDL_CreateWindow("Space-Chukie", _x, _y, s_WIDTH, s_HEIGHT, 0);
-    m_renderer = SDL_CreateRenderer(m_window, -1, 0);
-    m_isRunning = true;    
+    if (0 == SDL_Init(SDL_INIT_EVERYTHING))
+    {
+        m_window = SDL_CreateWindow("Space-Chukie", _x, _y, s_WIDTH, s_HEIGHT, 0);
+        if (nullptr == m_window)
+        {
+            error("SDL_CreateWindow");
+        }
+        m_renderer = SDL_CreateRenderer(m_window, -1, 0);
+        if (nullptr == m_renderer)
+        {
+            error("SDL_CreateRenderer");
+        }
+        m_isRunning = true;
+    }
 }
+
 
 void Game::render(Texture const & _texture, int _x, int _y, int _width, int _height)
 {

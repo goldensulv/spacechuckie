@@ -7,7 +7,7 @@
 extern SDL_Renderer* gRenderer;
 
 
-static void error(char* _fuck)
+extern void error(char* _fuck)
 {
 	printf("%s failed: %s\n", _fuck, SDL_GetError());
 	SDL_Quit();

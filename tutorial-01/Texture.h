@@ -5,6 +5,8 @@
 #include <SDL2/SDL.h>
 #include <string>
 
+extern void error(char* _fuck);
+
 class Texture
 {
     public:
