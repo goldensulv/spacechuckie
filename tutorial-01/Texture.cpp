@@ -1,8 +1,8 @@
-// ltexture.cpp
+// Texture.cpp
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 
-#include "ltexture.h"
+#include "Texture.h"
 
 extern SDL_Renderer* gRenderer;
 
@@ -14,19 +14,19 @@ static void error(char* _fuck)
 	exit(-1);
 }
 
-LTexture::LTexture()
+Texture::Texture()
 :
     m_texture(nullptr),
     m_height(0),
     m_width(0)
 {}
 
-LTexture::~LTexture()
+Texture::~Texture()
 {
     free();
 }
 
-bool LTexture::loadFromFile(std::string _path)
+bool Texture::loadFromFile(std::string _path)
 {
     free();
 
@@ -54,7 +54,7 @@ bool LTexture::loadFromFile(std::string _path)
 }
 
 
-void LTexture::free()
+void Texture::free()
 {
     if (m_texture)
     {
@@ -63,19 +63,25 @@ void LTexture::free()
         m_height = 0;
     }
 }
-
-void LTexture::render(int _x, int _y)
+/*
+void Texture::render(int _x, int _y)
 {
     SDL_Rect renderQuad = {_x, _y, m_width, m_height};
     SDL_RenderCopy(gRenderer, m_texture, NULL, &renderQuad);
 }
+*/
 
-int LTexture::getHeight()
+SDL_Texture* Texture::getTexture() const
+{
+    return m_texture;
+}
+
+int Texture::getHeight() const
 {
     return m_height;
 }
 
-int LTexture::getWidth()
+int Texture::getWidth() const
 {
     return m_width;
 }

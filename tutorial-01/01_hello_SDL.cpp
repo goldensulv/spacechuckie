@@ -107,8 +107,8 @@ int main(int argc, char* args[])
 	bool quit = false;
 	SDL_Event event;
 
-	gBackgroundTexture.loadFromFile("foo.png");
-	gItemTexture.loadFromFile("background.png");
+	gBackgroundTexture.loadFromFile("background.png");
+	gItemTexture.loadFromFile("foo.png");
 
 /* Game loop */
 

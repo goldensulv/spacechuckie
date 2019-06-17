@@ -1,25 +1,26 @@
-// ltexture.h
-#ifndef LTEXTURE_H
-#define LTEXTURE_H
+// Texture.h
+#ifndef Texture_H
+#define Texture_H
 
 #include <SDL2/SDL.h>
 #include <string>
 
-class LTexture
+class Texture
 {
     public:
-        LTexture();
-        ~LTexture();
+        Texture();
+        ~Texture();
 
         bool loadFromFile(std::string _path);
 
         void free();
-
+/*
         void render(int _x, int _y);
-
+*/
         // get image dimensions
-        int getWidth();
-        int getHeight();
+        SDL_Texture* getTexture() const;
+        int getWidth() const;
+        int getHeight() const;
     
     private:
         SDL_Texture*    m_texture;
@@ -28,4 +29,4 @@ class LTexture
 };
 
 
-#endif /* LTEXTURE_H */
+#endif /* Texture_H */
