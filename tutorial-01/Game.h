@@ -9,10 +9,17 @@ class Game
         Game();
         ~Game();
 
-        void init(int _x, int _y, int _width, int _height);
-        void render(Texture const & _texture);
+        void init(int _x, int _y);
+        void render(Texture const & _texture, int _x, int _y, int _width, int _height);
 
+        bool isRunning() const;
 
+        void stop();
+
+        SDL_Renderer* getRenderer() const;
+
+        int getWidth() const;
+        int getHeight() const;
     private:
         bool            m_isRunning;
         SDL_Window*     m_window;
