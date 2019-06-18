@@ -13,7 +13,7 @@ class Texture
         Texture();
         ~Texture();
 
-        bool loadFromFile(std::string _path);
+        bool loadFromFile(std::string _path, SDL_Renderer* _renderer);
 
         void free();
 /*

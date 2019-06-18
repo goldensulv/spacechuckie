@@ -9,7 +9,7 @@ class Game
         Game();
         ~Game();
 
-        void init(int _x, int _y);
+        void init(int _width, int _height);
         void render(Texture const & _texture, int _x, int _y, int _width, int _height);
 
         bool isRunning() const;

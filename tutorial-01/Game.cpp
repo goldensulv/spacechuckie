@@ -19,11 +19,11 @@ Game::~Game()
     SDL_DestroyWindow(m_window);
 }
 
-void Game::init(int _x, int _y)
+void Game::init(int _width, int _height)
 {
     if (0 == SDL_Init(SDL_INIT_EVERYTHING))
     {
-        m_window = SDL_CreateWindow("Space-Chukie", _x, _y, s_WIDTH, s_HEIGHT, 0);
+        m_window = SDL_CreateWindow("Space-Chukie", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, s_WIDTH, s_HEIGHT, 0);
         if (nullptr == m_window)
         {
             error("SDL_CreateWindow");
@@ -43,6 +43,12 @@ void Game::render(Texture const & _texture, int _x, int _y, int _width, int _hei
     SDL_Rect renderQuad = {_x, _y, _width, _height};
     SDL_RenderCopy(m_renderer, _texture.getTexture(), NULL, &renderQuad);
 }
+
+bool Game::isRunning() const
+{
+    return m_isRunning;
+}
+
 
 void Game::stop()
 {

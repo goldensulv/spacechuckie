@@ -4,8 +4,6 @@
 
 #include "Texture.h"
 
-extern SDL_Renderer* gRenderer;
-
 
 extern void error(char* _fuck)
 {
@@ -26,19 +24,24 @@ Texture::~Texture()
     free();
 }
 
-bool Texture::loadFromFile(std::string _path)
+bool Texture::loadFromFile(std::string _path, SDL_Renderer* _renderer)
 {
     free();
 
 	SDL_Texture* newTexture = nullptr;
-	SDL_Surface* loadedSurface = IMG_Load(_path.c_str());
-	if (!loadedSurface)
+	SDL_Surface* tempLoadedSurface = IMG_Load(_path.c_str());
+	if (!tempLoadedSurface)
 	{
 		error("IMG_Load");
 	}
+    // Optimize image (is this needed?)
+    SDL_Surface* loadedSurface = SDL_ConvertSurface(tempLoadedSurface, tempLoadedSurface->format, 0);
+	SDL_assert(loadedSurface);
+	SDL_FreeSurface(tempLoadedSurface);
+
     SDL_SetColorKey(loadedSurface, SDL_TRUE, SDL_MapRGB(loadedSurface->format, 0x00, 0xFF, 0xFF));
 
-	newTexture = SDL_CreateTextureFromSurface(gRenderer, loadedSurface);
+	newTexture = SDL_CreateTextureFromSurface(_renderer, loadedSurface);
 	if (!newTexture)
 	{
 		error("SDL_CreateTextrueFromSurface");
