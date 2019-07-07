@@ -28,8 +28,6 @@ int main(int argc, char* argv[])
     Texture background;
     texture.loadFromFile("background.png", renderer);
 
-    game.render(background, 0, 0, w_g, h_g);
-
     while (game.isRunning())
     {
         SDL_Event event;
@@ -43,6 +41,7 @@ int main(int argc, char* argv[])
             {
                 SDL_RenderClear(game.getRenderer());
                 std::cout << "width: " << w_t << std::endl << "height: " << h_t << std::endl;
+                game.render(background, 0, 0, w_g, h_g);
                 game.render(texture, w_g / 2 - w_t / s_RESIZE, h_g - h_t / s_RESIZE, w_t / s_RESIZE, h_t / s_RESIZE);
                 SDL_RenderPresent(renderer);
             }
