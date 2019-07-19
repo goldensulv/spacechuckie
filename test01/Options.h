@@ -4,6 +4,8 @@
 
 #include <cstddef>
 
+#include "Player.h"
+
 constexpr size_t windowWidth{800}, windowHeight{600};
 
 

@@ -1,23 +1,27 @@
 default: test
 
 CC = g++
-MAIN_SOURCE = Main/test.cpp
-SOURCES = $(wildcard *.cpp) 
+SOURCES = $(wildcard *.cpp)
 OBJECTS = $(SOURCES:.cpp=.o)
 
-INC_DIRS =  -I.
-CPPFLAGS = -g3 -ansi -pedantic -Wall -Werror -DDEBUG -std=c++11 $(INC_DIRS)
-CXXFLAGS = -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
+INC_DIRS = -I. -I../include
+CXXFLAGS = -g3 -ansi -pedantic -Werror -Wall -DDEBUG -std=c++11 $(INC_DIRS)
+LDFLAGS = -g3 -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
+
+include depends
+depends: 
+	$(CC) -MM $(INC_DIRS) $(SOURCES) > depends
 
 $(OBJECTS): $(SOURCES)
 
-test.o: $(MAIN_SOURCE)
-	$(CC) $(CPPFLAGS) -c $^
-test: $(OBJECTS) test.o
-	$(CC) $^ -o $@ $(CXXFLAGS)
+test: $(OBJECTS)
+
+test: $(OBJECTS)
+	$(CC) $^ $(LDFLAGS) -o $@ 
+	# this shit is needed because -l flags must appear after the object files in linking
 
 clean:
-	rm test $(OBJECTS) test.o
+	rm test $(OBJECTS) depends
 
 run:
 	./test

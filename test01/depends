@@ -1,0 +1,4 @@
+Player.o: Player.cpp Player.h Collidable.h Shape.h Options.h
+Ball.o: Ball.cpp Ball.h Collidable.h Shape.h Options.h Player.h
+Collidable.o: Collidable.cpp Collidable.h Shape.h
+test.o: test.cpp Options.h Player.h Collidable.h Shape.h Ball.h

@@ -3,29 +3,36 @@
 #define BALL_H
 
 #include <SFML/Graphics.hpp>
-using namespace sf;
 
-class Ball
-{
+#include "Collidable.h"
+#include "Shape.h"
 
-public:
-    Ball(float a_x, float a_y);
+namespace my {
 
-    void update();
+    class Ball : public Shape, public Collidable
+    {
 
-//  Ease-of-use getters
-    float x() { return m_ball.getPosition().x; };
-    float y() { return m_ball.getPosition().y; };
-    float left() { return x() - m_ball.getRadius(); };
-    float right() { return x() + m_ball.getRadius(); };
-    float top() { return y() - m_ball.getRadius(); };
-    float bottom() { return y() + m_ball.getRadius(); };
+    public:
+        Ball(float a_x, float a_y);
 
-// data-members
-    CircleShape m_ball;
-    Vector2f    m_velocity; // 2d vector
+        void update();
 
-};
+    //  Ease-of-use getters
+        float x() const { return m_ball.getPosition().x; };
+        float y() const { return m_ball.getPosition().y; };
+        float left() const { return x() - m_ball.getRadius(); };
+        float right() const { return x() + m_ball.getRadius(); };
+        float top() const { return y() - m_ball.getRadius(); };
+        float bottom() const { return y() + m_ball.getRadius(); };
+
+    // data-members
+        sf::CircleShape m_ball;
+        sf::Vector2f    m_velocity; // 2d vector
+
+    };
+
+} //end my
+
 
 
 

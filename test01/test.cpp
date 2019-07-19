@@ -1,36 +1,35 @@
 // test.cpp
 
 #include <SFML/Graphics.hpp>
-using namespace sf;
 
 #include "Options.h"
 #include "Ball.h"
 #include "Player.h"
 
+my::Player g_Player;
 
 int main()
 {
     // create game window
-    RenderWindow window{{windowWidth, windowHeight}, "X-Ball"};
+    sf::RenderWindow window{{windowWidth, windowHeight}, "X-Ball"};
     window.setFramerateLimit(60);
 
-    Ball ball{windowWidth / 2, windowHeight / 2};
-    Player player;
+    my::Ball ball{windowWidth / 2, windowHeight / 2};
 
     while (window.isOpen())
     {
-        window.clear(Color::Black);
-        Event event;
+        window.clear(sf::Color::Black);
+        sf::Event event;
         while (window.pollEvent(event))
         {
-            if (event.type == Event::Closed)
+            if (event.type == sf::Event::Closed)
                 window.close();
         }
         ball.update();
-        player.update();
+        g_Player.update();
 
         window.draw(ball.m_ball);
-        window.draw(player.m_player);
+        window.draw(g_Player.m_player);
         window.display();
     }
 
