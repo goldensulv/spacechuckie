@@ -35,19 +35,16 @@ namespace my {
 
         if (my::Collidable::areColliding(*this, g_Player))
         {
-            if (y() < g_Player.top())
+            // if (y() < g_Player.top() && (left() == g_Player.right() || right() == g_Player.left()))
+            // {
+            //     m_velocity.x *= -1;
+            // }
+            // else
             {
-                m_velocity.x *= -1;
-            }
-            else
-            {
-                if (x() < g_Player.x())
+                m_velocity.y *= -1;
+                if (x() != g_Player.x())
                 {
                     m_velocity.x -= (g_Player.x() - x()) / (playerWidth / 2) * ballVelocity;
-                }
-                else if (x() > g_Player.x())
-                {
-                    m_velocity.x += (x() - g_Player.x()) / (playerWidth / 2) * ballVelocity;
                 }
             }
         }
