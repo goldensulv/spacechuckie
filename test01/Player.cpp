@@ -8,11 +8,10 @@ namespace my {
     Player::Player()
     :    m_velocity{0, 0}
     {
+        m_player.setOrigin(playerWidth / 2.f, playerHeight / 2.f);
         m_player.setPosition(windowWidth / 2, windowHeight - playerHeight / 2);
         m_player.setSize({playerWidth, playerHeight});
         m_player.setFillColor(sf::Color::Blue);
-        m_player.setOrigin(playerWidth / 2.f, playerHeight / 2.f);
-
     }
 
     void Player::update()
