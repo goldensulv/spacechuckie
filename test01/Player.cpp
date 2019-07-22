@@ -82,5 +82,3 @@ namespace my {
     }
 
 } // end my
-
-
