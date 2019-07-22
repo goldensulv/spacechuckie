@@ -74,7 +74,6 @@ namespace my {
         if (!m_isJumping && sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up))
         {
             m_ass = m_sJumping;
-
             m_assVelocity.y = -20;
 
             m_isJumping = true;
