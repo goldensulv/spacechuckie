@@ -23,7 +23,7 @@ int main()
 
     sf::Sprite s1(astronaut);
     s1.setScale({0.1,0.1});
-    s1.setOrigin(dimentions.x, dimentions.y);
+    s1.setOrigin(dimentions.x / 2, dimentions.y);
     s1.setPosition(g_Player.x(), g_Player.top());
 
     while (window.isOpen())
@@ -38,7 +38,7 @@ int main()
         ball.update();
 
         g_Player.update();
-        s1.setPosition(g_Player.x() + 40, g_Player.top());
+        s1.setPosition(g_Player.x(), g_Player.top());
 
         window.draw(s1);
 
