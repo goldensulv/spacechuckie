@@ -17,8 +17,28 @@ int main()
 
     my::Ball ball{windowWidth / 2, windowHeight / 2};
 
+    sf::Image background;
+    background.loadFromFile("Assets/round_background.jpeg");
+
+
+    sf::Texture back;
+    back.loadFromImage(background);
+
+    sf::Sprite b;
+    b.setTexture(back);
+
+    b.scale(1.5, 1.5);
+
+    // sf::Rect<int> background(0, 0, windowWidth, windowHeight);
+
+
     while (window.isOpen())
     {
+        sf::Vector2f a = (sf::Vector2f)background.getSize();
+        a.x /= 2;
+        a.y /= 2; 
+        b.setOrigin(a);
+        b.rotate(-0.02);
         window.clear(sf::Color::Black);
         sf::Event event;
         while (window.pollEvent(event))
@@ -26,6 +46,8 @@ int main()
             if (event.type == sf::Event::Closed)
                 window.close();
         }
+
+        window.draw(b);
         ball.update();
 
         g_Player.update();
