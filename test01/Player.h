@@ -9,9 +9,11 @@
 
 namespace my {
 
-    constexpr float playerWidth{60.f};
+    constexpr float playerWidth{80.f};
     constexpr float playerHeight{20.f};
     constexpr float playerVelocity{12.f};
+
+    constexpr float gravity{0.7f};
 
     class Player : public Shape, public Collidable
     {
@@ -32,6 +34,15 @@ namespace my {
     // data-members
         sf::RectangleShape  m_player;    
         sf::Vector2f        m_velocity;
+
+        sf::Texture         m_standing;
+        sf::Texture         m_jumping;
+        sf::Sprite          m_sStanding;
+        sf::Sprite          m_sJumping;
+        sf::Sprite          m_ass;
+
+        sf::Vector2f        m_assVelocity;
+        bool                m_isJumping;
     };
 
 } //end my

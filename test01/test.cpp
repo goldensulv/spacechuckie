@@ -17,15 +17,6 @@ int main()
 
     my::Ball ball{windowWidth / 2, windowHeight / 2};
 
-    sf::Texture astronaut;
-    astronaut.loadFromFile("Assets/astronaut_walking_grey.png");
-    sf::Vector2u dimentions = astronaut.getSize();
-
-    sf::Sprite s1(astronaut);
-    s1.setScale({0.1,0.1});
-    s1.setOrigin(dimentions.x / 2, dimentions.y);
-    s1.setPosition(g_Player.x(), g_Player.top());
-
     while (window.isOpen())
     {
         window.clear(sf::Color::Black);
@@ -38,12 +29,10 @@ int main()
         ball.update();
 
         g_Player.update();
-        s1.setPosition(g_Player.x(), g_Player.top());
-
-        window.draw(s1);
+        window.draw(g_Player.m_player);
+        window.draw(g_Player.m_ass);
 
         window.draw(ball.m_ball);
-        window.draw(g_Player.m_player);
         window.display();
     }
 
