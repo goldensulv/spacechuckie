@@ -18,12 +18,12 @@ int main()
     my::Ball ball{windowWidth / 2, windowHeight / 2};
 
     // load an image
-    sf::Image background;
-    background.loadFromFile("Assets/space.jpg");
+    // sf::Image background;
+    // background.loadFromFile();
     
     // make a texture from the image (move it to gpu)
     sf::Texture back;
-    back.loadFromImage(background);
+    back.loadFromFile("Assets/space.jpg");
 
     // make the texture drawable
     sf::Sprite b;
@@ -31,7 +31,7 @@ int main()
 
     b.scale(0.33, 0.33);
 
-    sf::Vector2f a = (sf::Vector2f)background.getSize();
+    sf::Vector2f a = (sf::Vector2f)back.getSize();
     a.x /= 2;
     a.y /= 2; 
     b.setOrigin(a);
