@@ -13,14 +13,17 @@ namespace my {
     ,   m_sJumping()
     ,   m_assVelocity{0, 0}
     ,   m_isJumping(false)
+    ,   m_lookingRight(false)
     {
         m_player.setOrigin(playerWidth / 2.f, playerHeight / 2.f);
         m_player.setPosition(windowWidth / 2, windowHeight - playerHeight / 2);
         m_player.setSize({playerWidth, playerHeight});
         m_player.setFillColor(sf::Color::Blue);
 
+        m_stand.loadFromFile("Assets/astronaut_walking_grey.png");
+
         {
-            m_standing.loadFromFile("Assets/astronaut_walking_grey.png");
+            m_standing.loadFromImage(m_stand);
             sf::Vector2u dimentions = m_standing.getSize();
 
             m_sStanding.setTexture(m_standing);
@@ -64,11 +67,25 @@ namespace my {
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left) && 0 < left())
         {
+            if (m_lookingRight)
+            {
+                m_stand.flipHorizontally();
+                m_standing.loadFromImage(m_stand);
+                m_lookingRight = false;
+            }
             m_velocity.x = -playerVelocity;
+            m_assVelocity.x = m_velocity.x;
         }
         else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right) && windowWidth > right())
         {
+            if (!m_lookingRight)
+            {
+                m_stand.flipHorizontally();
+                m_standing.loadFromImage(m_stand);
+                m_lookingRight = true;
+            }
             m_velocity.x = playerVelocity;
+            m_assVelocity.x = m_velocity.x;
         }
 
         if (!m_isJumping && sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up))

@@ -29,17 +29,16 @@ int main()
 
     b.scale(1.5, 1.5);
 
+    sf::Vector2f a = (sf::Vector2f)background.getSize();
+    a.x /= 2;
+    a.y /= 2; 
+    b.setOrigin(a);
     // sf::Rect<int> background(0, 0, windowWidth, windowHeight);
-
 
     while (window.isOpen())
     {
-        sf::Vector2f a = (sf::Vector2f)background.getSize();
-        a.x /= 2;
-        a.y /= 2; 
-        b.setOrigin(a);
         b.rotate(-0.02);
-        window.clear(sf::Color::Black);
+        window.clear();
         sf::Event event;
         while (window.pollEvent(event))
         {

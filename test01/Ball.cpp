@@ -7,7 +7,7 @@ extern my::Player g_Player;
 
 namespace my {
 
-    constexpr float ballRadius{10.f}; 
+    constexpr float ballRadius{30.f}; 
     constexpr float ballVelocity{8.f};
 
     Ball::Ball(float a_x, float a_y)
@@ -15,14 +15,17 @@ namespace my {
     {
         m_ball.setPosition(a_x, a_y);
         m_ball.setRadius(ballRadius);
-        m_ball.setFillColor(sf::Color::Green);
+        // m_ball.setFillColor(sf::Color::Green);
         m_ball.setOrigin(ballRadius, ballRadius);
+        m_elon.loadFromFile("Assets/elon.png");
+        m_ball.setTexture(&m_elon);
 
     }
 
     void Ball::update()
     {
         m_ball.move(m_velocity);
+        m_ball.rotate(1);
 
         if (0 >= left() || windowWidth <= right())
         {

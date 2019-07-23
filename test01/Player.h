@@ -35,6 +35,8 @@ namespace my {
         sf::RectangleShape  m_player;    
         sf::Vector2f        m_velocity;
 
+        sf::Image           m_stand;
+
         sf::Texture         m_standing;
         sf::Texture         m_jumping;
         sf::Sprite          m_sStanding;
@@ -43,6 +45,7 @@ namespace my {
 
         sf::Vector2f        m_assVelocity;
         bool                m_isJumping;
+        bool                m_lookingRight;
     };
 
 } //end my

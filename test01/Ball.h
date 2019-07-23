@@ -29,6 +29,8 @@ namespace my {
         sf::CircleShape m_ball;
         sf::Vector2f    m_velocity; // 2d vector
 
+        sf::Texture     m_elon;
+
     };
 
 } //end my
