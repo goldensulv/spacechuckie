@@ -12,22 +12,24 @@ my::Player g_Player;
 int main()
 {
     // create game window
-    sf::RenderWindow window{{windowWidth, windowHeight}, "X-Ball"};
+    sf::RenderWindow window{{windowWidth, windowHeight}, "SpaceChuckie"};
     window.setFramerateLimit(60);
 
     my::Ball ball{windowWidth / 2, windowHeight / 2};
 
+    // load an image
     sf::Image background;
-    background.loadFromFile("Assets/round_background.jpeg");
-
-
+    background.loadFromFile("Assets/space.jpg");
+    
+    // make a texture from the image (move it to gpu)
     sf::Texture back;
     back.loadFromImage(background);
 
+    // make the texture drawable
     sf::Sprite b;
     b.setTexture(back);
 
-    b.scale(1.5, 1.5);
+    b.scale(0.33, 0.33);
 
     sf::Vector2f a = (sf::Vector2f)background.getSize();
     a.x /= 2;
